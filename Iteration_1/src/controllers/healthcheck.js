@@ -2,7 +2,7 @@ const HealthCheck = require('../models/healthcheck');
 
 const healthCheck = async (req, res) => {
   // Check if request has any payload
-  if (Object.keys(req.body).length > 0 || Object.keys(req.query).length > 0) {
+  if ((req.body && Object.keys(req.body).length > 0) || (req.query && Object.keys(req.query).length > 0)) {
     return res.status(400).set({
       'Cache-Control': 'no-cache, no-store, must-revalidate',
       'Pragma': 'no-cache',
